@@ -1,7 +1,9 @@
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 from django.http import JsonResponse
 
-def github(request, **kwds):
-    data = {}
-    data.update(kwds)
-    data.update({'request': repr(request)})
-    return JsonResponse(data)
+@api_view(['POST'])
+def github(request):
+    print(request.data)
+    return Response({'reply': 'gotcha'})
